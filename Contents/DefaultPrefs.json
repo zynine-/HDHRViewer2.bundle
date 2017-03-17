@@ -46,6 +46,13 @@
 		"default": "none"
 	},
 	{
+		"id": "audio_codec",
+		"type": "enum",
+		"label": "Force Audio Codec",
+		"values": ["auto","mp2","ac3"],
+		"default": "auto"
+	},
+	{
 		"id": "favorites.1.enable",
 		"type": "bool",
 		"label": "Favorites 1 Enable",
