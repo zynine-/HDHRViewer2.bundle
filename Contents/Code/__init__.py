@@ -541,7 +541,7 @@ def ProgramMap_File(channellist):
                 else:
                     #next listing
                     program.next.append(Program(startTime,stopTime,title,date,subTitle,desc,icon,starRating))
-		if program!=None:
+                if program!=None:
                     allProgramsMap[channelmap] = program
                 i+=1
                 elem.clear()
