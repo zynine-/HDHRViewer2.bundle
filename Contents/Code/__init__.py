@@ -8,9 +8,9 @@ import os
 from lxml import etree
 
 DEBUGMODE            = True
-TITLE                = 'HDHR Viewer 2 (0.9.18)'
+TITLE                = 'HDHR Viewer 2 (0.9.19)'
 PREFIX               = '/video/hdhrv2'
-VERSION              = '0.9.18'
+VERSION              = '0.9.19'
 
 #GRAPHICS
 ART                  = 'art-default.jpg'
@@ -29,6 +29,7 @@ PREFS_XMLTV_MODE     = 'xmltv_mode'
 PREFS_XMLTV_FILE     = 'xmltv_file'
 PREFS_LOGO_MATCH     = 'channellogo'
 PREFS_XMLTV_MATCH    = 'xmltv_match'
+PREFS_AUDIO_CODEC    = 'audio_codec'
 
 #XMLTV Modes
 XMLTV_MODE_RESTAPI   = 'restapi'
@@ -540,7 +541,7 @@ def ProgramMap_File(channellist):
                 else:
                     #next listing
                     program.next.append(Program(startTime,stopTime,title,date,subTitle,desc,icon,starRating))
-		if program!=None:
+                if program!=None:
                     allProgramsMap[channelmap] = program
                 i+=1
                 elem.clear()
@@ -912,12 +913,15 @@ def AddChannelObjectContainer(oc, tuneridx, title, channels, search=False):
             videoCodec=videoCodec.lower()
 
         #AudioCodec correction
-        if audioCodec.lower()=='aac':
-            audioCodec='aac_latm'
-        elif audioCodec.lower()=='mpeg':
-            audioCodec='mp2'
+        if Prefs[PREFS_AUDIO_CODEC]=='auto':
+          if audioCodec.lower()=='aac':
+              audioCodec='aac_latm'
+          elif audioCodec.lower()=='mpeg':
+              audioCodec='mp2'
+          else:
+              audioCodec=audioCodec.lower()
         else:
-            audioCodec=audioCodec.lower()
+            audioCodec=Prefs[PREFS_AUDIO_CODEC]
 
         #tempfix for iOS Plex 4.4
         if iOSPlex44(): 
