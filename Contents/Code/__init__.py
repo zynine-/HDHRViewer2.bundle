@@ -8,9 +8,9 @@ import os
 from lxml import etree
 
 DEBUGMODE            = True
-TITLE                = 'HDHR Viewer 2 (1.0.0)'
+TITLE                = 'HDHR Viewer 2 (1.0.1)'
 PREFIX               = '/video/hdhrv2'
-VERSION              = '1.0.0'
+VERSION              = '1.0.1'
 
 #GRAPHICS
 ART                  = 'art-default.jpg'
